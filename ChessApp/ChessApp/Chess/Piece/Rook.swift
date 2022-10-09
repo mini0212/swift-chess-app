@@ -7,24 +7,39 @@
 
 import Foundation
 
-struct Rook: Piece {
-    var color: PieceColor
-    var score: Int {
-        return 5
-    }
-    var display: String {
-        return color == .black ? "♜" : "♖"
-    }
+protocol Rook {
+    var score: Int { get }
+}
+
+extension Rook {
+    var score: Int { 5 }
+}
+
+final class BlackRook: Piece, Rook {
+    let color: PieceColor = .black
+    let display: String  = "♜"
+    
+    init() { }
     
     func startPosition() -> [Position] {
-        switch color {
-        case .black:
-            return [Position(file: .A, rank: .one),
-                    Position(file: .H, rank: .one)]
-        case .white:
-            return [Position(file: .A, rank: .eight),
-                    Position(file: .H, rank: .eight)]
-        }
+        [Position(file: .A, rank: .one),
+         Position(file: .H, rank: .one)]
+    }
+    
+    func validToMovePosition(current: Position, to: Position) -> Bool {
+        true
+    }
+}
+
+final class WhiteRook: Piece, Rook {
+    let color: PieceColor = .white
+    let display: String = "♖"
+    
+    init() { }
+    
+    func startPosition() -> [Position] {
+        [Position(file: .A, rank: .eight),
+         Position(file: .H, rank: .eight)]
     }
     
     func validToMovePosition(current: Position, to: Position) -> Bool {

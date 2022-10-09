@@ -9,7 +9,6 @@ import Foundation
 
 final class ChessGame {
     private let board = Board()
-    private var pawn = Pawn(color: .black)
     
     func startGame() {
         board.startGame()

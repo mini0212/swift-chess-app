@@ -7,34 +7,58 @@
 
 import Foundation
 
-struct Pawn: Piece {
-    let color: PieceColor
-    var score: Int {
-        return 1
-    }
-    var display: String {
-        return color == .black ? "♟" : "♙"
-    }
+protocol Pawn {
+    var score: Int { get }
+}
+
+extension Pawn {
+    var score: Int { 1 }
+}
+
+final class BlackPawn: Piece, Pawn {
+    let color: PieceColor = .black
+    let display: String  = "♟"
+    
+    init() { }
     
     func startPosition() -> [Position] {
-        switch color {
-        case .black:
-            return Position.File.allCases.compactMap { Position(file: $0, rank: .two) }
-        case .white:
-            return Position.File.allCases.compactMap { Position(file: $0, rank: .seven) }
-        }
+        [Position(file: .A, rank: .two),
+         Position(file: .B, rank: .two),
+         Position(file: .C, rank: .two),
+         Position(file: .D, rank: .two),
+         Position(file: .E, rank: .two),
+         Position(file: .F, rank: .two),
+         Position(file: .G, rank: .two),
+         Position(file: .H, rank: .two)]
     }
     
     func validToMovePosition(current: Position, to: Position) -> Bool {
-        switch color {
-        case .black:
-            return current.rank.rawValue < to.rank.rawValue
-            && abs(current.rank.rawValue - to.rank.rawValue) == 1
-            && current.file == to.file
-        case .white:
-            return current.rank.rawValue > to.rank.rawValue
-            && abs(current.rank.rawValue - to.rank.rawValue) == 1
-            && current.file == to.file
-        }
+        return current.rank.rawValue < to.rank.rawValue
+        && abs(current.rank.rawValue - to.rank.rawValue) == 1
+        && current.file == to.file
+    }
+}
+
+final class WhitePawn: Piece, Pawn {
+    let color: PieceColor = .white
+    let display: String = "♙" 
+    
+    init() { }
+    
+    func startPosition() -> [Position] {
+        [Position(file: .A, rank: .seven),
+         Position(file: .B, rank: .seven),
+         Position(file: .C, rank: .seven),
+         Position(file: .D, rank: .seven),
+         Position(file: .E, rank: .seven),
+         Position(file: .F, rank: .seven),
+         Position(file: .G, rank: .seven),
+         Position(file: .H, rank: .seven)]
+    }
+    
+    func validToMovePosition(current: Position, to: Position) -> Bool {
+        return current.rank.rawValue > to.rank.rawValue
+        && abs(current.rank.rawValue - to.rank.rawValue) == 1
+        && current.file == to.file
     }
 }

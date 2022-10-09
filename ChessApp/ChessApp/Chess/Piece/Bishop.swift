@@ -7,27 +7,42 @@
 
 import Foundation
 
-struct Bishop: Piece {
-    var color: PieceColor
-    var score: Int {
-        return 3
-    }
-    var display: String {
-        return color == .black ? "♝" : "♗"
-    }
+protocol Bishop {
+    var score: Int { get }
+}
+
+extension Bishop {
+    var score: Int { 3 }
+}
+
+final class BlackBishop: Piece, Bishop {
+    let color: PieceColor = .black
+    let display: String  = "♝"
+    
+    init() { }
     
     func startPosition() -> [Position] {
-        switch color {
-        case .black:
-            return [Position(file: .C, rank: .one),
-                    Position(file: .F, rank: .one)]
-        case .white:
-            return [Position(file: .C, rank: .eight),
-                    Position(file: .F, rank: .eight)]
-        }
+        [Position(file: .C, rank: .one),
+         Position(file: .F, rank: .one)]
     }
     
     func validToMovePosition(current: Position, to: Position) -> Bool {
-        return true
+        true
+    }
+}
+
+final class WhiteBishop: Piece, Bishop {
+    let color: PieceColor = .white
+    let display: String = "♗"
+    
+    init() { }
+    
+    func startPosition() -> [Position] {
+        [Position(file: .C, rank: .eight),
+         Position(file: .F, rank: .eight)]
+    }
+    
+    func validToMovePosition(current: Position, to: Position) -> Bool {
+        true
     }
 }

@@ -1,28 +1,29 @@
 //
-//  Queen.swift
+//  King.swift
 //  ChessApp
 //
-//  Created by seongmin.kim on 2022/10/05.
+//  Created by seongmin.kim on 2022/10/10.
 //
 
 import Foundation
 
-protocol Queen {
+protocol King {
     var score: Int { get }
 }
 
-extension Queen {
-    var score: Int { 9 }
+extension King {
+    var score: Int { 3 }
 }
 
-final class BlackQueen: Piece, Queen {
+
+final class BlackKing: Piece, King {
     let color: PieceColor = .black
-    let display: String  = "♛"
+    let display: String  = "♚"
     
     init() { }
     
     func startPosition() -> [Position] {
-        [Position(file: .E, rank: .one)]
+        [Position(file: .D, rank: .one)]
     }
     
     func validToMovePosition(current: Position, to: Position) -> Bool {
@@ -30,14 +31,14 @@ final class BlackQueen: Piece, Queen {
     }
 }
 
-final class WhiteQueen: Piece, Queen {
+final class WhiteKing: Piece, King {
     let color: PieceColor = .white
-    let display: String = "♕"
+    let display: String = "♔"
     
     init() { }
     
     func startPosition() -> [Position] {
-        [Position(file: .E, rank: .eight)]
+        [Position(file: .D, rank: .eight)]
     }
     
     func validToMovePosition(current: Position, to: Position) -> Bool {

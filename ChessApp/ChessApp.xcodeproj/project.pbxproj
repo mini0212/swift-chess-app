@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		464F864828F3276B00039A0C /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464F864728F3276B00039A0C /* King.swift */; };
 		4671BF6928E28A8C00A11817 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671BF6828E28A8C00A11817 /* AppDelegate.swift */; };
 		4671BF6B28E28A8C00A11817 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671BF6A28E28A8C00A11817 /* SceneDelegate.swift */; };
 		4671BF6D28E28A8C00A11817 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671BF6C28E28A8C00A11817 /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		464F864728F3276B00039A0C /* King.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
 		4671BF6528E28A8C00A11817 /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4671BF6828E28A8C00A11817 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4671BF6A28E28A8C00A11817 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,8 +185,9 @@
 				4671BF9E28E3EE0A00A11817 /* Pawn.swift */,
 				4671BFA928EB20D400A11817 /* Bishop.swift */,
 				4671BFAB28EB219200A11817 /* Rook.swift */,
-				4671BFB928EC881300A11817 /* Queen.swift */,
 				4671BFBB28EC881B00A11817 /* Knight.swift */,
+				4671BFB928EC881300A11817 /* Queen.swift */,
+				464F864728F3276B00039A0C /* King.swift */,
 			);
 			path = Piece;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				4671BFAA28EB20D400A11817 /* Bishop.swift in Sources */,
 				4671BF9D28E3EDF100A11817 /* Position.swift in Sources */,
 				4671BF9F28E3EE0A00A11817 /* Pawn.swift in Sources */,
+				464F864828F3276B00039A0C /* King.swift in Sources */,
 				4671BF6B28E28A8C00A11817 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

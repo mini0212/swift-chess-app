@@ -7,27 +7,43 @@
 
 import Foundation
 
-struct Knight: Piece {
-    var color: PieceColor
-    var score: Int {
-        return 3
-    }
-    var display: String {
-        return color == .black ? "♞" : "♘"
-    }
+protocol Knight {
+    var score: Int { get }
+}
+
+extension Knight {
+    var score: Int { 3 }
+}
+
+
+final class BlackKnight: Piece, Knight {
+    let color: PieceColor = .black
+    let display: String  = "♞"
+    
+    init() { }
     
     func startPosition() -> [Position] {
-        switch color {
-        case .black:
-            return [Position(file: .B, rank: .one),
-                    Position(file: .G, rank: .one)]
-        case .white:
-            return [Position(file: .B, rank: .eight),
-                    Position(file: .G, rank: .eight)]
-        }
+        [Position(file: .B, rank: .one),
+         Position(file: .G, rank: .one)]
     }
     
     func validToMovePosition(current: Position, to: Position) -> Bool {
-        return true
+        true
+    }
+}
+
+final class WhiteKnight: Piece, Knight {
+    let color: PieceColor = .white
+    let display: String = "♘"
+    
+    init() { }
+    
+    func startPosition() -> [Position] {
+        [Position(file: .B, rank: .eight),
+         Position(file: .G, rank: .eight)]
+    }
+    
+    func validToMovePosition(current: Position, to: Position) -> Bool {
+        true
     }
 }

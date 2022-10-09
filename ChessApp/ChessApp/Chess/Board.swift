@@ -15,16 +15,18 @@ final class Board {
     }
     
     func startGame() {
-        initBoard(with: Pawn(color: .black))
-        initBoard(with: Pawn(color: .white))
-        initBoard(with: Bishop(color: .black))
-        initBoard(with: Bishop(color: .white))
-        initBoard(with: Rook(color: .black))
-        initBoard(with: Rook(color: .white))
-        initBoard(with: Knight(color: .black))
-        initBoard(with: Knight(color: .white))
-        initBoard(with: Queen(color: .black))
-        initBoard(with: Queen(color: .white))
+        initBoard(with: BlackPawn())
+        initBoard(with: WhitePawn())
+        initBoard(with: BlackBishop())
+        initBoard(with: WhiteBishop())
+        initBoard(with: BlackRook())
+        initBoard(with: WhiteRook())
+        initBoard(with: BlackKnight())
+        initBoard(with: WhiteKnight())
+        initBoard(with: BlackQueen())
+        initBoard(with: WhiteQueen())
+        initBoard(with: BlackKing())
+        initBoard(with: WhiteKing())
     }
     
     func move(piece: Piece, from: Position, to: Position) {
