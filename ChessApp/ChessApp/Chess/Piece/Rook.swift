@@ -18,6 +18,7 @@ extension Rook {
 final class BlackRook: Piece, Rook {
     let color: PieceColor = .black
     let display: String  = "♜"
+    var current: Position?
     
     init() { }
     
@@ -26,14 +27,17 @@ final class BlackRook: Piece, Rook {
          Position(file: .H, rank: .one)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        true
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }
 
 final class WhiteRook: Piece, Rook {
     let color: PieceColor = .white
     let display: String = "♖"
+    var current: Position?
     
     init() { }
     
@@ -42,7 +46,9 @@ final class WhiteRook: Piece, Rook {
          Position(file: .H, rank: .eight)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        true
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }

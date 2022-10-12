@@ -11,8 +11,9 @@ protocol Piece {
     var color: PieceColor { get }
     var display: String { get }
     var score: Int { get }
+    var current: Position? { get set }
     func startPosition() -> [Position]
-    func validToMovePosition(current: Position, to: Position) -> Bool
+    func validToMove() -> [Position]
 }
 
 enum PieceColor {

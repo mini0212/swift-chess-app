@@ -18,6 +18,7 @@ extension Queen {
 final class BlackQueen: Piece, Queen {
     let color: PieceColor = .black
     let display: String  = "♛"
+    var current: Position?
     
     init() { }
     
@@ -25,14 +26,17 @@ final class BlackQueen: Piece, Queen {
         [Position(file: .E, rank: .one)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        true
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }
 
 final class WhiteQueen: Piece, Queen {
     let color: PieceColor = .white
     let display: String = "♕"
+    var current: Position?
     
     init() { }
     
@@ -40,7 +44,9 @@ final class WhiteQueen: Piece, Queen {
         [Position(file: .E, rank: .eight)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        true
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }

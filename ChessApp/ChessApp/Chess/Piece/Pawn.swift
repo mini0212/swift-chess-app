@@ -18,6 +18,7 @@ extension Pawn {
 final class BlackPawn: Piece, Pawn {
     let color: PieceColor = .black
     let display: String  = "♟"
+    var current: Position?
     
     init() { }
     
@@ -32,16 +33,17 @@ final class BlackPawn: Piece, Pawn {
          Position(file: .H, rank: .two)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        return current.rank.rawValue < to.rank.rawValue
-        && abs(current.rank.rawValue - to.rank.rawValue) == 1
-        && current.file == to.file
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }
 
 final class WhitePawn: Piece, Pawn {
     let color: PieceColor = .white
     let display: String = "♙" 
+    var current: Position?
     
     init() { }
     
@@ -56,9 +58,9 @@ final class WhitePawn: Piece, Pawn {
          Position(file: .H, rank: .seven)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        return current.rank.rawValue > to.rank.rawValue
-        && abs(current.rank.rawValue - to.rank.rawValue) == 1
-        && current.file == to.file
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }

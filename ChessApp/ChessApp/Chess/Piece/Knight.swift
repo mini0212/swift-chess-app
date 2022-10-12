@@ -19,6 +19,7 @@ extension Knight {
 final class BlackKnight: Piece, Knight {
     let color: PieceColor = .black
     let display: String  = "♞"
+    var current: Position?
     
     init() { }
     
@@ -27,14 +28,17 @@ final class BlackKnight: Piece, Knight {
          Position(file: .G, rank: .one)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        true
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }
 
 final class WhiteKnight: Piece, Knight {
     let color: PieceColor = .white
     let display: String = "♘"
+    var current: Position?
     
     init() { }
     
@@ -43,7 +47,9 @@ final class WhiteKnight: Piece, Knight {
          Position(file: .G, rank: .eight)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        true
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }

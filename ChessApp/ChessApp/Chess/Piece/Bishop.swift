@@ -18,6 +18,7 @@ extension Bishop {
 final class BlackBishop: Piece, Bishop {
     let color: PieceColor = .black
     let display: String  = "♝"
+    var current: Position?
     
     init() { }
     
@@ -26,14 +27,17 @@ final class BlackBishop: Piece, Bishop {
          Position(file: .F, rank: .one)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        true
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }
 
 final class WhiteBishop: Piece, Bishop {
     let color: PieceColor = .white
     let display: String = "♗"
+    var current: Position?
     
     init() { }
     
@@ -42,7 +46,9 @@ final class WhiteBishop: Piece, Bishop {
          Position(file: .F, rank: .eight)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        true
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }

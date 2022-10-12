@@ -19,6 +19,7 @@ extension King {
 final class BlackKing: Piece, King {
     let color: PieceColor = .black
     let display: String  = "♚"
+    var current: Position?
     
     init() { }
     
@@ -26,14 +27,17 @@ final class BlackKing: Piece, King {
         [Position(file: .D, rank: .one)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        true
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }
 
 final class WhiteKing: Piece, King {
     let color: PieceColor = .white
     let display: String = "♔"
+    var current: Position?
     
     init() { }
     
@@ -41,7 +45,9 @@ final class WhiteKing: Piece, King {
         [Position(file: .D, rank: .eight)]
     }
     
-    func validToMovePosition(current: Position, to: Position) -> Bool {
-        true
+    func validToMove() -> [Position] {
+        guard let current = current else { return [] }
+        var positions: [Position] = []
+        return positions
     }
 }
