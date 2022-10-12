@@ -156,4 +156,91 @@ final class WhiteBishopTest: XCTestCase {
     }
 }
 
+final class BlackRookTest: XCTestCase {
+    func test_rook_생성() throws {
+        let piece = BlackRook()
+        let pieceLocation = [Position(file: .A, rank: .one),
+                             Position(file: .H, rank: .one)]
+        XCTAssertEqual(piece.startPosition(), pieceLocation)
+    }
+    
+    func test_rook_이동_성공() throws {
+        let piece = BlackRook()
+        piece.current = Position(file: .A, rank: .one)
+        piece.current = Position(file: .A, rank: .two)
+        XCTAssertNotEqual(piece.current, Position(file: .A, rank: .one))
+        XCTAssertEqual(piece.current, Position(file: .A, rank: .two))
+    }
+    
+    func test_rook_이동_가능_위치_성공() throws {
+        let piece = BlackRook()
+        piece.current = Position(file: .A, rank: .one)
+        let movePosition = [Position(file: .A, rank: .two),
+                            Position(file: .A, rank: .three),
+                            Position(file: .A, rank: .four),
+                            Position(file: .A, rank: .five),
+                            Position(file: .A, rank: .six),
+                            Position(file: .A, rank: .seven),
+                            Position(file: .A, rank: .eight),
+                            Position(file: .B, rank: .one),
+                            Position(file: .C, rank: .one),
+                            Position(file: .D, rank: .one),
+                            Position(file: .E, rank: .one),
+                            Position(file: .F, rank: .one),
+                            Position(file: .G, rank: .one),
+                            Position(file: .H, rank: .one)]
+        XCTAssertEqual(piece.validToMove(), movePosition)
+    }
+    
+    func test_rook_이동_가능_위치_실패() throws {
+        let piece = BlackRook()
+        piece.current = Position(file: .C, rank: .eight)
+        let movePosition = [Position(file: .B, rank: .four)]
+        XCTAssertNotEqual(piece.validToMove(), movePosition)
+    }
 }
+
+final class WhiteRookTest: XCTestCase {
+    func test_rook_생성() throws {
+        let piece = WhiteRook()
+        let pieceLocation = [Position(file: .A, rank: .eight),
+                             Position(file: .H, rank: .eight)]
+        XCTAssertEqual(piece.startPosition(), pieceLocation)
+    }
+    
+    func test_rook_이동_성공() throws {
+        let piece = WhiteRook()
+        piece.current = Position(file: .A, rank: .eight)
+        piece.current = Position(file: .A, rank: .seven)
+        XCTAssertNotEqual(piece.current, Position(file: .A, rank: .eight))
+        XCTAssertEqual(piece.current, Position(file: .A, rank: .seven))
+    }
+    
+    func test_rook_이동_가능_위치_성공() throws {
+        let piece = WhiteRook()
+        piece.current = Position(file: .H, rank: .eight)
+        let movePosition = [Position(file: .H, rank: .seven),
+                            Position(file: .H, rank: .six),
+                            Position(file: .H, rank: .five),
+                            Position(file: .H, rank: .four),
+                            Position(file: .H, rank: .three),
+                            Position(file: .H, rank: .two),
+                            Position(file: .H, rank: .one),
+                            Position(file: .G, rank: .eight),
+                            Position(file: .F, rank: .eight),
+                            Position(file: .E, rank: .eight),
+                            Position(file: .D, rank: .eight),
+                            Position(file: .C, rank: .eight),
+                            Position(file: .B, rank: .eight),
+                            Position(file: .A, rank: .eight)]
+        XCTAssertEqual(piece.validToMove(), movePosition)
+    }
+    
+    func test_rook_이동_가능_위치_실패() throws {
+        let piece = WhiteRook()
+        piece.current = Position(file: .C, rank: .eight)
+        let movePosition = [Position(file: .B, rank: .four)]
+        XCTAssertNotEqual(piece.validToMove(), movePosition)
+    }
+}
+

@@ -30,6 +30,35 @@ final class BlackRook: Piece, Rook {
     func validToMove() -> [Position] {
         guard let current = current else { return [] }
         var positions: [Position] = []
+        let bottom = Int(current.rank.distance(to: .eight).magnitude)
+        let top = Int(current.rank.distance(to: .one).magnitude)
+        let left = Int(current.file.distance(to: .A).magnitude)
+        let right = Int(current.file.distance(to: .H).magnitude)
+        
+        if bottom > 0 {
+            for index in 1...bottom {
+                positions.append(Position(file: current.file, rank: current.rank.advanced(by: index)))
+            }
+        }
+        
+        if top > 0 {
+            for index in 1...top {
+                positions.append(Position(file: current.file, rank: current.rank.advanced(by: -index)))
+            }
+        }
+        
+        if left > 0 {
+            for index in 1...left {
+                positions.append(Position(file: current.file.advanced(by: -index), rank: current.rank))
+            }
+        }
+        
+        if right > 0 {
+            for index in 1...right {
+                positions.append(Position(file: current.file.advanced(by: index), rank: current.rank))
+            }
+        }
+        
         return positions
     }
 }
@@ -49,6 +78,35 @@ final class WhiteRook: Piece, Rook {
     func validToMove() -> [Position] {
         guard let current = current else { return [] }
         var positions: [Position] = []
+        let bottom = Int(current.rank.distance(to: .eight).magnitude)
+        let top = Int(current.rank.distance(to: .one).magnitude)
+        let left = Int(current.file.distance(to: .A).magnitude)
+        let right = Int(current.file.distance(to: .H).magnitude)
+        
+        if bottom > 0 {
+            for index in 1...bottom {
+                positions.append(Position(file: current.file, rank: current.rank.advanced(by: index)))
+            }
+        }
+        
+        if top > 0 {
+            for index in 1...top {
+                positions.append(Position(file: current.file, rank: current.rank.advanced(by: -index)))
+            }
+        }
+        
+        if left > 0 {
+            for index in 1...left {
+                positions.append(Position(file: current.file.advanced(by: -index), rank: current.rank))
+            }
+        }
+        
+        if right > 0 {
+            for index in 1...right {
+                positions.append(Position(file: current.file.advanced(by: index), rank: current.rank))
+            }
+        }
+        
         return positions
     }
 }
