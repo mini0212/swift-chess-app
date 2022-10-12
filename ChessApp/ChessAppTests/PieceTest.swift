@@ -82,12 +82,78 @@ final class WhitePawnTest: XCTestCase {
     }
 }
 
+final class BlackBishopTest: XCTestCase {
+    func test_bishop_생성() throws {
+        let piece = BlackBishop()
+        let pieceLocation = [Position(file: .C, rank: .one),
+                             Position(file: .F, rank: .one)]
+        XCTAssertEqual(piece.startPosition(), pieceLocation)
     }
     
+    func test_bishop_이동_성공() throws {
+        let piece = BlackBishop()
+        piece.current = Position(file: .C, rank: .one)
+        piece.current = Position(file: .E, rank: .three)
+        XCTAssertNotEqual(piece.current, Position(file: .C, rank: .one))
+        XCTAssertEqual(piece.current, Position(file: .E, rank: .three))
     }
     
+    func test_bishop_이동_가능_위치_성공() throws {
+        let piece = BlackBishop()
+        piece.current = Position(file: .C, rank: .one)
+        let movePosition = [Position(file: .B, rank: .two),
+                            Position(file: .A, rank: .three),
+                            Position(file: .D, rank: .two),
+                            Position(file: .E, rank: .three),
+                            Position(file: .F, rank: .four),
+                            Position(file: .G, rank: .five),
+                            Position(file: .H, rank: .six)]
+        XCTAssertEqual(piece.validToMove(), movePosition)
     }
+    
+    func test_bishop_이동_가능_위치_실패() throws {
+        let piece = BlackBishop()
+        piece.current = Position(file: .C, rank: .one)
+        let movePosition = [Position(file: .B, rank: .four)]
+        XCTAssertNotEqual(piece.validToMove(), movePosition)
+    }
+}
 
+final class WhiteBishopTest: XCTestCase {
+    func test_bishop_생성() throws {
+        let piece = WhiteBishop()
+        let pieceLocation = [Position(file: .C, rank: .eight),
+                             Position(file: .F, rank: .eight)]
+        XCTAssertEqual(piece.startPosition(), pieceLocation)
     }
+    
+    func test_bishop_이동_성공() throws {
+        let piece = WhiteBishop()
+        piece.current = Position(file: .C, rank: .eight)
+        piece.current = Position(file: .E, rank: .five)
+        XCTAssertNotEqual(piece.current, Position(file: .C, rank: .eight))
+        XCTAssertEqual(piece.current, Position(file: .E, rank: .five))
+    }
+    
+    func test_bishop_이동_가능_위치_성공() throws {
+        let piece = WhiteBishop()
+        piece.current = Position(file: .C, rank: .eight)
+        let movePosition = [Position(file: .B, rank: .seven),
+                            Position(file: .A, rank: .six),
+                            Position(file: .D, rank: .seven),
+                            Position(file: .E, rank: .six),
+                            Position(file: .F, rank: .five),
+                            Position(file: .G, rank: .four),
+                            Position(file: .H, rank: .three)]
+        XCTAssertEqual(piece.validToMove(), movePosition)
+    }
+    
+    func test_bishop_이동_가능_위치_실패() throws {
+        let piece = WhiteBishop()
+        piece.current = Position(file: .C, rank: .eight)
+        let movePosition = [Position(file: .B, rank: .four)]
+        XCTAssertNotEqual(piece.validToMove(), movePosition)
+    }
+}
 
 }
