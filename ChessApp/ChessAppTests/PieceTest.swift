@@ -8,43 +8,86 @@
 import XCTest
 @testable import ChessApp
 
-final class PieceTest: XCTestCase {
-    
-   
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+final class BlackPawnTest: XCTestCase {
+    func test_pawn_생성() throws {
+        let pawn = BlackPawn()
+        let pawnLocation = [Position(file: .A, rank: .two),
+                            Position(file: .B, rank: .two),
+                            Position(file: .C, rank: .two),
+                            Position(file: .D, rank: .two),
+                            Position(file: .E, rank: .two),
+                            Position(file: .F, rank: .two),
+                            Position(file: .G, rank: .two),
+                            Position(file: .H, rank: .two)]
+        XCTAssertEqual(pawn.startPosition(), pawnLocation)
     }
     
-    func test_pawn이동_성공() throws {
-        XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .A, rank: .two), to: Position(file: .A, rank: .three)))
-        XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .B, rank: .three), to: Position(file: .B, rank: .four)))
-        XCTAssertTrue(Pawn(color: .black).validToMovePosition(current: Position(file: .C, rank: .two), to: Position(file: .C, rank: .three)))
+    func test_pawn_이동_성공() throws {
+        let pawn = BlackPawn()
+        pawn.current = Position(file: .B, rank: .two)
+        pawn.current = Position(file: .B, rank: .three)
+        XCTAssertNotEqual(pawn.current, Position(file: .B, rank: .two))
+        XCTAssertEqual(pawn.current, Position(file: .B, rank: .three))
     }
     
-    func test_pawn이동_실패() throws {
-        XCTAssertFalse(Pawn(color: .black).validToMovePosition(current: Position(file: .D, rank: .two), to: Position(file: .A, rank: .two)))
-        XCTAssertFalse(Pawn(color: .black).validToMovePosition(current: Position(file: .E, rank: .two), to: Position(file: .F, rank: .six)))
-        XCTAssertFalse(Pawn(color: .black).validToMovePosition(current: Position(file: .C, rank: .two), to: Position(file: .C, rank: .five)))
+    func test_pawn_이동_가능_위치_성공() throws {
+        let pawn = BlackPawn()
+        pawn.current = Position(file: .B, rank: .two)
+        let movePosition = [Position(file: .B, rank: .three)]
+        XCTAssertEqual(pawn.validToMove(), movePosition)
+    }
+    
+    func test_pawn_이동_가능_위치_실패() throws {
+        let pawn = BlackPawn()
+        pawn.current = Position(file: .B, rank: .two)
+        let movePosition = [Position(file: .B, rank: .four)]
+        XCTAssertNotEqual(pawn.validToMove(), movePosition)
+    }
+}
+
+final class WhitePawnTest: XCTestCase {
+    func test_pawn_생성() throws {
+        let pawn = WhitePawn()
+        let pawnLocation = [Position(file: .A, rank: .seven),
+                            Position(file: .B, rank: .seven),
+                            Position(file: .C, rank: .seven),
+                            Position(file: .D, rank: .seven),
+                            Position(file: .E, rank: .seven),
+                            Position(file: .F, rank: .seven),
+                            Position(file: .G, rank: .seven),
+                            Position(file: .H, rank: .seven)]
+        XCTAssertEqual(pawn.startPosition(), pawnLocation)
+    }
+    
+    func test_pawn_이동_성공() throws {
+        let pawn = WhitePawn()
+        pawn.current = Position(file: .B, rank: .seven)
+        pawn.current = Position(file: .B, rank: .six)
+        XCTAssertNotEqual(pawn.current, Position(file: .B, rank: .seven))
+        XCTAssertEqual(pawn.current, Position(file: .B, rank: .six))
+    }
+    
+    func test_pawn_이동_가능_위치_성공() throws {
+        let pawn = WhitePawn()
+        pawn.current = Position(file: .B, rank: .seven)
+        let movePosition = [Position(file: .B, rank: .six)]
+        XCTAssertEqual(pawn.validToMove(), movePosition)
+    }
+    
+    func test_pawn_이동_가능_위치_실패() throws {
+        let pawn = WhitePawn()
+        pawn.current = Position(file: .B, rank: .seven)
+        let movePosition = [Position(file: .B, rank: .five)]
+        XCTAssertNotEqual(pawn.validToMove(), movePosition)
+    }
+}
+
+    }
+    
+    }
+    
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }

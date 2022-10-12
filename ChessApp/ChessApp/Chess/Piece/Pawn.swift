@@ -36,6 +36,10 @@ final class BlackPawn: Piece, Pawn {
     func validToMove() -> [Position] {
         guard let current = current else { return [] }
         var positions: [Position] = []
+        let bottom = Int(current.rank.distance(to: .eight).magnitude)
+        if bottom > 0 {
+            positions.append(Position(file: current.file, rank: current.rank.advanced(by: 1)))
+        }
         return positions
     }
 }
@@ -61,6 +65,10 @@ final class WhitePawn: Piece, Pawn {
     func validToMove() -> [Position] {
         guard let current = current else { return [] }
         var positions: [Position] = []
+        let bottom = Int(current.rank.distance(to: .one).magnitude)
+        if bottom > 0 {
+            positions.append(Position(file: current.file, rank: current.rank.advanced(by: -1)))
+        }
         return positions
     }
 }
