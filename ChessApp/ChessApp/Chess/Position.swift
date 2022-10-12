@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Position {
+struct Position: Hashable {
     let file: File
     let rank: Rank
     
@@ -18,13 +18,34 @@ struct Position {
 }
 
 extension Position {
-    enum File: Int, CaseIterable {
+    enum File: Int, Strideable, CaseIterable {
+        typealias Stride = Int
+        
         case A = 0
         case B,C,D,E,F,G,H
+        func distance(to other: Position.File) -> Int {
+            Stride(other.rawValue) - Stride(self.rawValue)
+        }
+        
+        func advanced(by n: Int) -> Position.File {
+            return File(rawValue: numericCast(Stride(self.rawValue) + n))!
+        }
     }
+}
 
-    enum Rank: Int, CaseIterable {
+extension Position {
+    enum Rank: Int, Strideable, CaseIterable {
+        typealias Stride = Int
+        
         case one = 0
         case two, three, four, five, six, seven, eight
+        
+        func distance(to other: Position.Rank) -> Int {
+            Stride(other.rawValue) - Stride(self.rawValue)
+        }
+        
+        func advanced(by n: Int) -> Position.Rank {
+            return Rank(rawValue: numericCast(Stride(self.rawValue) + n))!
+        }
     }
 }
