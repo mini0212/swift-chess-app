@@ -65,8 +65,8 @@ final class WhitePawn: Piece, Pawn {
     func validToMove() -> [Position] {
         guard let current = current else { return [] }
         var positions: [Position] = []
-        let bottom = Int(current.rank.distance(to: .one).magnitude)
-        if bottom > 0 {
+        let top = Int(current.rank.distance(to: .one).magnitude)
+        if top > 0 {
             positions.append(Position(file: current.file, rank: current.rank.advanced(by: -1)))
         }
         return positions
