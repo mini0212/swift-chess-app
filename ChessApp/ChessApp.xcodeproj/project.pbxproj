@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		464F864828F3276B00039A0C /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464F864728F3276B00039A0C /* King.swift */; };
+		464F864E28F8151600039A0C /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464F864D28F8151600039A0C /* Errors.swift */; };
 		4671BF6928E28A8C00A11817 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671BF6828E28A8C00A11817 /* AppDelegate.swift */; };
 		4671BF6B28E28A8C00A11817 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671BF6A28E28A8C00A11817 /* SceneDelegate.swift */; };
 		4671BF6D28E28A8C00A11817 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671BF6C28E28A8C00A11817 /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		464F864728F3276B00039A0C /* King.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
+		464F864D28F8151600039A0C /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		4671BF6528E28A8C00A11817 /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4671BF6828E28A8C00A11817 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4671BF6A28E28A8C00A11817 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				4671BF9C28E3EDF100A11817 /* Position.swift */,
+				464F864D28F8151600039A0C /* Errors.swift */,
 				4671BFA428EAF56900A11817 /* Piece */,
 				4671BFA028E3EE5900A11817 /* Board.swift */,
 				4671BFA228E415C100A11817 /* ChessGame.swift */,
@@ -329,6 +332,7 @@
 				4671BFBA28EC881300A11817 /* Queen.swift in Sources */,
 				4671BFBC28EC881B00A11817 /* Knight.swift in Sources */,
 				4671BFA128E3EE5900A11817 /* Board.swift in Sources */,
+				464F864E28F8151600039A0C /* Errors.swift in Sources */,
 				4671BFAC28EB219200A11817 /* Rook.swift in Sources */,
 				4671BFA628EAF57500A11817 /* Piece.swift in Sources */,
 				4671BFAA28EB20D400A11817 /* Bishop.swift in Sources */,
